@@ -28,7 +28,7 @@
   }
   
   /* Size variants */
-  .size--small {
+  /* .size--small {
     max-width: 120px;
   }
   
@@ -38,7 +38,7 @@
   
   .size--large {
     max-width: 300px;
-  }
+  } */
   
   /* Main image */
   .image {
