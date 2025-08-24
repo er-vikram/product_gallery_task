@@ -1,0 +1,223 @@
+/* Container with aspect ratio control */
+.container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Aspect ratio variants */
+  .aspect--1-1 {
+    aspect-ratio: 1 / 1;
+  }
+  
+  .aspect--4-3 {
+    aspect-ratio: 4 / 3;
+  }
+  
+  .aspect--3-2 {
+    aspect-ratio: 3 / 2;
+  }
+  
+  .aspect--16-9 {
+    aspect-ratio: 16 / 9;
+  }
+  
+  /* Size variants */
+  .size--small {
+    max-width: 120px;
+  }
+  
+  .size--medium {
+    max-width: 200px;
+  }
+  
+  .size--large {
+    max-width: 300px;
+  }
+  
+  /* Main image */
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .imageLoaded {
+    opacity: 1;
+  }
+  
+  .container:hover .imageLoaded {
+    transform: scale(1.02);
+  }
+  
+  /* Skeleton loading state */
+  .skeleton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .skeletonContent {
+    color: #c0c0c0;
+  }
+  
+  /* Error fallback */
+  .errorFallback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f4f6;
+    color: #9ca3af;
+    gap: 8px;
+  }
+  
+  .errorText {
+    font-size: 12px;
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  /* Gallery styles */
+  .gallery {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  }
+  
+  .galleryItem {
+    position: relative;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .galleryItem:hover {
+    transform: scale(1.02);
+  }
+  
+  .galleryItem:focus-visible {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+  }
+  
+  .moreImagesOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  /* Loading animation */
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .container {
+      background-color: #374151;
+    }
+    
+    .skeleton {
+      background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+      background-size: 200% 100%;
+    }
+    
+    .skeletonContent {
+      color: #6b7280;
+    }
+    
+    .errorFallback {
+      background-color: #1f2937;
+      color: #6b7280;
+    }
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .size--large {
+      max-width: 250px;
+    }
+    
+    .size--medium {
+      max-width: 180px;
+    }
+    
+    .size--small {
+      max-width: 100px;
+    }
+    
+    .gallery {
+      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+      gap: 6px;
+    }
+    
+    .errorText {
+      font-size: 10px;
+    }
+  }
+  
+  /* High contrast mode */
+  @media (prefers-contrast: high) {
+    .container {
+      border: 2px solid #000000;
+    }
+    
+    .galleryItem:focus-visible {
+      outline-width: 3px;
+      outline-color: #000000;
+    }
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .image,
+    .galleryItem,
+    .container:hover .imageLoaded {
+      transition: none;
+      transform: none;
+    }
+    
+    .skeleton {
+      animation: none;
+      background: #f0f0f0;
+    }
+  }

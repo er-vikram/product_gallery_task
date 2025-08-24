@@ -1,0 +1,49 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.tag:hover {
+  background-color: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+.tag:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.tagActive {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.tagActive:hover {
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.activeIcon {
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .tag {
+    padding: var(--spacing-sm) var(--spacing-sm);
+    font-size: 0.8125rem;
+  }
+}

@@ -1,0 +1,248 @@
+/* Base card styles */
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    
+    /* Ensure proper stacking context */
+    isolation: isolate;
+  }
+  
+  /* Variant styles */
+  .card--default {
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  .card--elevated {
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .card--outlined {
+    border: 2px solid #e5e7eb;
+    box-shadow: none;
+  }
+  
+  .card--flat {
+    border: none;
+    box-shadow: none;
+    background-color: #f9fafb;
+  }
+  
+  /* Interactive card styles */
+  .card--interactive {
+    cursor: pointer;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+    
+    &:focus-visible {
+      outline: 2px solid #0066cc;
+      outline-offset: 2px;
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  .card--interactive.card--default:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .card--interactive.card--elevated:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .card--interactive.card--outlined:hover {
+    border-color: #d1d5db;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  .card--interactive.card--flat:hover {
+    background-color: #f3f4f6;
+  }
+  
+  /* Padding variants */
+  .card--padding-none {
+    padding: 0;
+  }
+  
+  .card--padding-small {
+    padding: 12px;
+  }
+  
+  .card--padding-medium {
+    padding: 16px;
+  }
+  
+  .card--padding-large {
+    padding: 24px;
+  }
+  
+  /* Card sections */
+  .cardHeader {
+    flex-shrink: 0;
+  }
+  
+  .cardContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cardFooter {
+    flex-shrink: 0;
+    margin-top: auto;
+  }
+  
+  /* When card has both header and content, add spacing */
+  .cardHeader + .cardContent {
+    margin-top: 12px;
+  }
+  
+  /* When card has both content and footer, add spacing */
+  .cardContent + .cardFooter {
+    margin-top: 12px;
+  }
+  
+  /* Loading state */
+  .card--loading {
+    pointer-events: none;
+    position: relative;
+  }
+  
+  .loadingOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(1px);
+    z-index: 1;
+    
+    /* Loading animation */
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 24px;
+      height: 24px;
+      margin: -12px 0 0 -12px;
+      border: 2px solid #e5e7eb;
+      border-top-color: #0066cc;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  }
+  
+  /* Skeleton loading state */
+  .skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+  
+  .skeletonContent {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+  }
+  
+  .skeletonLine {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 4px;
+  }
+  
+  /* Animations */
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  /* Dark mode support (for future implementation) */
+  @media (prefers-color-scheme: dark) {
+    .card {
+      background-color: #1f2937;
+      color: #f9fafb;
+    }
+    
+    .card--default,
+    .card--elevated,
+    .card--outlined {
+      border-color: #374151;
+    }
+    
+    .card--flat {
+      background-color: #111827;
+    }
+    
+    .loadingOverlay {
+      background-color: rgba(31, 41, 55, 0.8);
+    }
+    
+    .skeleton,
+    .skeletonLine {
+      background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+      background-size: 200% 100%;
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .card--padding-large {
+      padding: 16px;
+    }
+    
+    .card--padding-medium {
+      padding: 12px;
+    }
+    
+    .cardHeader + .cardContent {
+      margin-top: 8px;
+    }
+    
+    .cardContent + .cardFooter {
+      margin-top: 8px;
+    }
+  }
+  
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .card--default,
+    .card--elevated,
+    .card--outlined {
+      border-color: #000000;
+      border-width: 2px;
+    }
+    
+    .card--interactive:focus-visible {
+      outline-width: 3px;
+      outline-color: #000000;
+    }
+  }
+  

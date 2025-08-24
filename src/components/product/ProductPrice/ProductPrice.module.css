@@ -1,0 +1,273 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+  }
+  
+  /* Layout variants */
+  .layout--horizontal {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .layout--vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  /* Size variants */
+  .size--small {
+    font-size: 14px;
+  }
+  
+  .size--medium {
+    font-size: 16px;
+  }
+  
+  .size--large {
+    font-size: 20px;
+  }
+  
+  /* Current price styling */
+  .currentPrice {
+    display: flex;
+    align-items: baseline;
+    font-weight: 600;
+    color: #111827;
+  }
+  
+  .container--discounted .currentPrice {
+    color: #059669; /* Green for discounted price */
+  }
+  
+  .currencySymbol {
+    font-size: 0.9em;
+    margin-right: 2px;
+  }
+  
+  .priceValue {
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  
+  /* Original price (crossed out) */
+  .originalPrice {
+    display: flex;
+    align-items: center;
+  }
+  
+  .strikethrough {
+    position: relative;
+    color: #6b7280;
+    font-size: 0.875em;
+    font-weight: 400;
+    text-decoration: line-through;
+    text-decoration-color: #dc2626;
+    text-decoration-thickness: 2px;
+  }
+  
+  /* Discount information */
+  .discountInfo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .layout--vertical .discountInfo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  
+  .discountBadge {
+    background-color: #dc2626;
+    color: white;
+    font-size: 0.75em;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+  
+  .saveAmount {
+    background-color: #065f46;
+    color: white;
+    font-size: 0.75em;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  
+  /* Price range styling */
+  .priceRange {
+    color: #374151;
+  }
+  
+  .priceRangeText {
+    font-weight: 500;
+    letter-spacing: -0.025em;
+  }
+  
+  /* Screen reader only content */
+  .srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
+  /* Size-specific adjustments */
+  .size--small .discountBadge,
+  .size--small .saveAmount {
+    font-size: 0.6875em;
+    padding: 1px 4px;
+  }
+  
+  .size--large .discountBadge,
+  .size--large .saveAmount {
+    font-size: 0.8125em;
+    padding: 3px 8px;
+  }
+  
+  .size--small .currencySymbol {
+    font-size: 0.85em;
+  }
+  
+  .size--large .currencySymbol {
+    font-size: 0.95em;
+  }
+  
+  /* Hover effects for interactive contexts */
+  .container:hover .currentPrice {
+    color: #0f172a;
+  }
+  
+  .container--discounted:hover .currentPrice {
+    color: #047857;
+  }
+  
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .currentPrice {
+      color: #f9fafb;
+    }
+    
+    .container--discounted .currentPrice {
+      color: #10b981;
+    }
+    
+    .strikethrough {
+      color: #9ca3af;
+      text-decoration-color: #f87171;
+    }
+    
+    .discountBadge {
+      background-color: #ef4444;
+    }
+    
+    .saveAmount {
+      background-color: #047857;
+    }
+    
+    .priceRange {
+      color: #d1d5db;
+    }
+    
+    .container:hover .currentPrice {
+      color: #ffffff;
+    }
+    
+    .container--discounted:hover .currentPrice {
+      color: #34d399;
+    }
+  }
+  
+  /* High contrast mode */
+  @media (prefers-contrast: high) {
+    .currentPrice {
+      color: #000000;
+      font-weight: 700;
+    }
+    
+    .container--discounted .currentPrice {
+      color: #006400;
+    }
+    
+    .strikethrough {
+      color: #800000;
+      text-decoration-color: #ff0000;
+      text-decoration-thickness: 3px;
+    }
+    
+    .discountBadge {
+      background-color: #cc0000;
+      border: 1px solid #000000;
+    }
+    
+    .saveAmount {
+      background-color: #004d00;
+      border: 1px solid #000000;
+    }
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .container {
+      gap: 6px;
+    }
+    
+    .layout--horizontal {
+      flex-wrap: wrap;
+    }
+    
+    .discountInfo {
+      gap: 4px;
+    }
+    
+    /* Stack elements on very small screens */
+    @media (max-width: 480px) {
+      .layout--horizontal {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+    }
+  }
+  
+  /* Animation for price changes (future enhancement) */
+  @keyframes priceChange {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .priceValue {
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+  }
+  
+  /* Add animation class programmatically when price changes */
+  .priceValue.animate {
+    animation-name: priceChange;
+  }
+  
+  /* Focus styles for interactive price components */
+  .container:focus-within {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }

@@ -1,0 +1,208 @@
+.errorContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    padding: 20px;
+  }
+  
+  .errorCard {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    border-color: #fecaca !important;
+    background-color: #fef2f2;
+  }
+  
+  .errorIcon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: #dc2626;
+  }
+  
+  .errorTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #374151;
+    margin: 0 0 12px 0;
+  }
+  
+  .errorMessage {
+    font-size: 16px;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+  }
+  
+  .errorActions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  
+  .errorDetails {
+    text-align: left;
+    margin-top: 20px;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 20px;
+  }
+  
+  .errorDetailsSummary {
+    font-weight: 600;
+    color: #374151;
+    cursor: pointer;
+    padding: 8px 0;
+    border: none;
+    background: none;
+    font-size: 14px;
+    
+    &:hover {
+      color: #0066cc;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid #0066cc;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  }
+  
+  .errorDetailsContent {
+    margin-top: 16px;
+    padding: 16px;
+    background-color: #f9fafb;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+  }
+  
+  .errorDetailsContent h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin: 16px 0 8px 0;
+  }
+  
+  .errorDetailsContent h3:first-child {
+    margin-top: 0;
+  }
+  
+  .errorStack {
+    background-color: #1f2937;
+    color: #f9fafb;
+    padding: 12px;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+    margin: 0;
+    border: 1px solid #374151;
+  }
+  
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .errorCard {
+      background-color: #1f2937;
+      border-color: #ef4444 !important;
+    }
+    
+    .errorTitle {
+      color: #f9fafb;
+    }
+    
+    .errorMessage {
+      color: #d1d5db;
+    }
+    
+    .errorDetails {
+      border-top-color: #374151;
+    }
+    
+    .errorDetailsSummary {
+      color: #f9fafb;
+      
+      &:hover {
+        color: #60a5fa;
+      }
+    }
+    
+    .errorDetailsContent {
+      background-color: #111827;
+      border-color: #374151;
+    }
+    
+    .errorDetailsContent h3 {
+      color: #f9fafb;
+    }
+    
+    .errorStack {
+      background-color: #000000;
+      color: #10b981;
+      border-color: #374151;
+    }
+  }
+  
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .errorContainer {
+      min-height: 300px;
+      padding: 16px;
+    }
+    
+    .errorTitle {
+      font-size: 20px;
+    }
+    
+    .errorMessage {
+      font-size: 14px;
+    }
+    
+    .errorActions {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .errorActions button {
+      width: 100%;
+      max-width: 200px;
+    }
+    
+    .errorStack {
+      font-size: 11px;
+      padding: 8px;
+    }
+  }
+  
+  /* High contrast mode */
+  @media (prefers-contrast: high) {
+    .errorCard {
+      border-width: 3px !important;
+      border-color: #dc2626 !important;
+    }
+    
+    .errorTitle {
+      color: #000000;
+    }
+    
+    .errorMessage {
+      color: #000000;
+    }
+    
+    .errorStack {
+      background-color: #000000;
+      color: #00ff00;
+      border: 2px solid #000000;
+    }
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .errorCard {
+      transition: none;
+    }
+  }
